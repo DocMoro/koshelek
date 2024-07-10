@@ -1,0 +1,46 @@
+@import url(./shared/vendor/normalize.css);
+@import url(./shared/vendor/fonts.css);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'SegoeUI', Arial, sans-serif;
+  font-size: 18px;
+
+  --color-grey: #848484;
+  --color-white: #f5f5f5;
+  --color-blue: #c2d4ff;
+  --color-black: #000;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  background-color: var(--color-blue);
+}
+
+@media screen and (max-width: 720px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  html {
+    font-size: 10px;
+  }
+}
