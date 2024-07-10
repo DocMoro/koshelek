@@ -1,52 +1,32 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FC } from 'react'
 
-import { exchangeRate } from '../../shared/constants/vars'
-import { checkValidCurrensi, numberFixed } from '../../shared/utils/pureFunc'
+import { TCurrencies } from '../../shared/constants/type'
 
-const startUsdValue = '1'
+type FormOfCurrenciesProps = {
+  currencies: TCurrencies
+  setValueUsd: (newValue: string) => void
+  setValueEur: (newValue: string) => void
+}
 
-export const FormOfCurrencies = () => {
-  const [value, setValue] = useState(startUsdValue)
-  const [value2, setValue2] = useState(exchangeRate.toString())
-
+export const FormOfCurrencies: FC<FormOfCurrenciesProps> = ({ currencies, setValueUsd, setValueEur }) => {
   const handleChangeUsdField = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(prev => {
-      if (e.target.value === '') {
-        setValue2('')
-        return ''
-      }
-      if (!checkValidCurrensi(e.target.value)) {
-        return prev
-      }
-      setValue2(numberFixed(+e.target.value * exchangeRate, 2).toString())
-      return e.target.value
-    })
+    setValueUsd(e.target.value)
   }
 
   const handleChangeEurField = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue2(prev => {
-      if (e.target.value === '') {
-        setValue('')
-        return ''
-      }
-      if (!checkValidCurrensi(e.target.value)) {
-        return prev
-      }
-      setValue(numberFixed(+e.target.value / exchangeRate, 2).toString())
-      return e.target.value
-    })
+    setValueEur(e.target.value)
   }
 
   return (
     <form>
       <div>
         <h4>USD</h4>
-        <input type="text" onChange={handleChangeUsdField} value={value} />
+        <input type="text" onChange={handleChangeUsdField} value={currencies.valueUsd} />
         <span></span>
       </div>
       <div>
         <h4>EUR</h4>
-        <input type="text" onChange={handleChangeEurField} value={value2} />
+        <input type="text" onChange={handleChangeEurField} value={currencies.valueEur} />
         <span></span>
       </div>
     </form>
