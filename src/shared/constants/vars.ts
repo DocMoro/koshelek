@@ -4,3 +4,4 @@ export const startCurrenciesValue = {
   valueUsd: '1',
   valueEur: '1.07'
 }
+export const notValidText = 'Enter a valid value'
