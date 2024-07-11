@@ -1,12 +1,12 @@
 import './App.css'
 
 import { FormOfCurrencies } from './components/FormOfCurrencies'
-import { useCurrenciesStore } from './store/currencies'
+import { selectorCurrencies, selectorValueEur, selectorValueUsd, useCurrenciesStore } from './store/currencies'
 
 function App() {
-  const currencies = useCurrenciesStore(state => state.currencies)
-  const setValueUsd = useCurrenciesStore(state => state.setValueUsd)
-  const setValueEur = useCurrenciesStore(state => state.setValueEur)
+  const currencies = useCurrenciesStore(selectorCurrencies)
+  const setValueUsd = useCurrenciesStore(selectorValueUsd)
+  const setValueEur = useCurrenciesStore(selectorValueEur)
 
   return (
     <>

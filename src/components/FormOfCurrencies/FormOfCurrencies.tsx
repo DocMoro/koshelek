@@ -1,6 +1,7 @@
 import { ChangeEvent, FC } from 'react'
 
 import { TCurrencies } from '../../shared/constants/type'
+import s from './FormOfCurrencies.module.css'
 
 type FormOfCurrenciesProps = {
   currencies: TCurrencies
@@ -18,14 +19,14 @@ export const FormOfCurrencies: FC<FormOfCurrenciesProps> = ({ currencies, setVal
   }
 
   return (
-    <form>
+    <form className={s.Form}>
       <div>
-        <h4>USD</h4>
+        <h4 className={s.Title}>USD</h4>
         <input type="text" onChange={handleChangeUsdField} value={currencies.valueUsd} />
         <span></span>
       </div>
       <div>
-        <h4>EUR</h4>
+        <h4 className={s.Title}>EUR</h4>
         <input type="text" onChange={handleChangeEurField} value={currencies.valueEur} />
         <span></span>
       </div>

@@ -13,7 +13,9 @@ type Action = {
   setValueEur: (newValue: string) => void
 }
 
-const useCurrenciesStore = create<State & Action>(set => ({
+type Store = State & Action
+
+const useCurrenciesStore = create<Store>(set => ({
   currencies: startCurrenciesValue,
   setValueUsd: (newValue: string) =>
     set(state => {
@@ -71,4 +73,8 @@ const useCurrenciesStore = create<State & Action>(set => ({
     })
 }))
 
-export { useCurrenciesStore }
+const selectorCurrencies = (state: Store) => state.currencies
+const selectorValueEur = (state: Store) => state.setValueEur
+const selectorValueUsd = (state: Store) => state.setValueUsd
+
+export { selectorCurrencies, selectorValueEur, selectorValueUsd, useCurrenciesStore }
